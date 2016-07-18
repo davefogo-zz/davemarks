@@ -1,0 +1,17 @@
+<h1 class="jumbotron">All Blocmarks</h1>
+<br>
+<div class="row">
+  <div class="col-md-8">
+    <% @topics.each do |topic| %>
+      <div class="media">
+        <div class="media-body">
+          <h3 class="media-heading">
+            <%= link_to topic.title, topic %> <%= link_to "Delete", topic, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this topic along with all the bookmarks?'} %>
+          </div>
+        </h3>
+        <%= render partial: 'bookmarks/bookmark', locals: {topic: topic} %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
+</div>
