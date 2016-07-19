@@ -10,13 +10,13 @@ class IncomingController < ApplicationController
     # magic here.
 
     # Find the user by using
-     @user = User.find(params[:sender])
+     user = params[:sender]
      # Find the topic by using
-     @topic = Topic.find(params[:subject])
+     topic = params[:subject]
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
 
-     @bookmark.create!(topic: @topic, user: @user, url: url)
+     bookmark.create!(topic: topic, user: user, url: url)
 
      # Check if user is nil, if so, create and save a new user
 
