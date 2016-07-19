@@ -1,5 +1,7 @@
 <h1 class="jumbotron">All Blocmarks</h1>
 <br>
+<%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
+<br>
 <div class="row">
   <div class="col-md-8">
     <% @topics.each do |topic| %>
@@ -13,5 +15,4 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
 </div>
