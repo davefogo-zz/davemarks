@@ -23,12 +23,12 @@ source 'https://rubygems.org'
  gem 'figaro'
  gem 'pry'
  gem 'devise'
+ gem 'faker'
 
  group :development, :test do
    gem 'byebug'
    gem 'rspec-rails'
    gem 'shoulda'
-   gem 'faker'
    gem 'factory_girl_rails'
    gem 'nyan-cat-formatter'
  end
