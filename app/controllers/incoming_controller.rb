@@ -7,22 +7,21 @@ class IncomingController < ApplicationController
 
 
     # Find the user by using
-     user = params[:sender]
+     user = User.find(params[:sender])
      # Find the topic by using
-     topic = params[:subject]
+     topic = Topic.find(params[:subject])
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
 
-     if curren_user.nil?
-       @user = User.create!(email: user, password: "password")
+     if @user.nil?
+       @user = User.new(email: user, password: "password")
        @user.save!
      end
 
      # Check if the topic is nil, if so, create and save a new topic
-      @topic = Topic.find(params[:subject])
 
       if @topic.nil?
-        @topic = Topic.create!(title: topic)
+        @topic = Topic.new(title: topic)
         @topic.save!
       end
 
