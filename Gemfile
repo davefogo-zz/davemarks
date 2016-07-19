@@ -8,6 +8,8 @@ source 'https://rubygems.org'
    gem 'rails_12factor'
  end
 
+ gem 'pg'
+
  group :development do
    gem 'sqlite3'
    gem 'web-console', '~> 2.0'
