@@ -1,10 +1,14 @@
 #create users
-5.times do
+
   User.create(
-  email: Faker::Internet.email,
-  password: Faker::Internet.password
+  email: "davefogo@gmail.com",
+  password: "password"
   )
-end
+  
+  User.create(
+  email: "david.forrero@gmail.com",
+  password: "password"
+  )
 
 users = User.all
 
