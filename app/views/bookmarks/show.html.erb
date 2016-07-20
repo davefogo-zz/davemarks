@@ -1,6 +1,7 @@
-<h2><%= link_to  @bookmark.url, @bookmark.url %></h2>
-<h3><%= @bookmark.description %></h3>
-<h4>by: <%= @bookmark.user.email %></h4>
+<br>
+<%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
+<h2><%= @bookmark.description %></h2><small> by: <%= @bookmark.user.email %></small>
+<h3><%= link_to  @bookmark.url, @bookmark.url %></h3>
 <br>
 <% if current_user == @bookmark.user%>
   <%= link_to "Edit", edit_topic_bookmark_path(@bookmark.topic, @bookmark), class: 'btn btn-primary' %>

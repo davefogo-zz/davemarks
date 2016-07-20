@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    user.preset
+    user.present?
   end
 
   def show?
@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    user.present
+    user.present?
   end
 
   def new?
