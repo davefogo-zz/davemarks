@@ -1,8 +1,11 @@
 <% topic.bookmarks.each do |bookmark| %>
   <div class="row">
     <div class="col-sm-8">
-      <h4 class="color"><%= link_to bookmark.description, topic_bookmark_path(topic, bookmark) %></h4> 
+      <h4><%= link_to bookmark.description, topic_bookmark_path(topic, bookmark) %></h4>
       <%= link_to "#{bookmark.url}", "#{bookmark.url}" %>
+      <% if current_user == bookmark.user %>
+        | <%= link_to "Remove", [topic, bookmark], method: :delete %>
+      <% end %>
       <br>
     </div>
   </div>

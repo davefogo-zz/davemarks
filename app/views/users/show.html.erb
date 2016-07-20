@@ -1,0 +1,30 @@
+<h1>Profile</h1>
+<br>
+<p class="pull-right">
+  <br>
+  <%= link_to "Edit Profile", edit_user_registration_path(@user), class: 'btn btn-default' %>
+</p>
+
+<h2>My Blocmarks</h2>
+  <div class="row">
+    <% @user_bookmarks.each do |user_bookmark| %>
+      <div class="media-header">
+        <h3><%= user_bookmark.topic.title %></h3>
+          <div class="media-body">
+            <%= render partial: 'bookmarks/bookmark', locals: {topic: user_bookmark.topic} %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+
+  <h2>Liked Blocmarks</h2>
+    <div class="row">
+      <% @liked_bookmarks.each do |like| %>
+        <div class="media-header">
+          <h3><%= like.bookmark.topic.title %></h3>
+            <div class="media-body">
+              <%= render partial: 'bookmarks/bookmark', locals: {topic: like.bookmark.topic} %>
+            </div>
+        </div>
+      <% end %>
+    </div>

@@ -15,7 +15,7 @@ users = User.all
 #create topics
 15.times do
   Topic.create(
-  title: Faker::Hacker.say_something_smart,
+  title: Faker::Hipster.word,
   user: users.sample
   )
 end

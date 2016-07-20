@@ -1,4 +1,4 @@
-<h1><%= @topic.title %></h1>
+<h1 class="jumbotron"><%= @topic.title %></h1>
 <%= link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-default' %>
 <p class="pull-right">
   <% if current_user == @topic.user%>
