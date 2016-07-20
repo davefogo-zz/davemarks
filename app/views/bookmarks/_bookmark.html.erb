@@ -1,7 +1,10 @@
 <% topic.bookmarks.each do |bookmark| %>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-8">
+      <%= bookmark.description %>
+      <br>
       <%= link_to "#{bookmark.url}", topic_bookmark_path(topic, bookmark) %>
+      <br>
     </div>
   </div>
 <% end %>
