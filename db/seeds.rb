@@ -1,5 +1,5 @@
-# #create users
-#
+#create users
+
   User.create(
   email: "davefogo@gmail.com",
   password: "password"
@@ -12,7 +12,14 @@
 #
 # users = User.all
 #
-# #create topics
+#create topics
+
+  title = ["General", "Git", "Rails", "Ruby", "Javascript", "HTML", "CSS", "Hobby", "USA", "Terminal", "macOS", "iOS", "Networking", "Heroku", "Productivity", "Wellness", "Learn", "Text Editors", "HTTP", "Technology Research", "Accounting", "Agile", "Bloc", "ideamos", "Business Intelligence", "Windows Server", "Finance", "Online Business", "Electrical Engineering", "RSpec", "Opportunities", "Dev Tools" ]
+
+  title.sort.each do |title|
+    Topic.create!(title: title, user_id: 1)
+  end
+
 # 15.times do
 #   Topic.create(
 #   title: Faker::Hipster.word,
