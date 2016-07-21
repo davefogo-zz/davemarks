@@ -1,0 +1,6 @@
+<h3>Import Topics</h3>
+<%= form_tag import_topics_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <br>
+  <%= submit_tag "Upload Topics", class: 'btn btn-default' %>
+<% end %>

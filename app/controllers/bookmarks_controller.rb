@@ -55,9 +55,14 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def import
+    Bookmark.import(params[:file])
+    redirect_to topics_path
+  end
+
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:url, :topic, :user)
+    params.require(:bookmark).permit(:url, :topic, :user, :description)
   end
 end

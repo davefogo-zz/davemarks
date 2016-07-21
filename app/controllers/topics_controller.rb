@@ -54,6 +54,11 @@ class TopicsController < ApplicationController
     end
   end
 
+  def import
+    Topic.import(params[:file])
+    redirect_to topics_path, notice: "Topics added successfully."
+  end
+
   private
 
   def topic_params

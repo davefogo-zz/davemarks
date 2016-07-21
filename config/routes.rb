@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   post :incoming, to: 'incoming#create'
 
   resources :topics do
+    collection { post :import}
     resources :bookmarks, except: [:index]
   end
 
   resources :bookmarks, only: [] do
+    collection {post :import}
     resources :likes, only: [:index, :create, :destroy]
   end
 
