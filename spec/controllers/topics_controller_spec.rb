@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe TopicsController, type: :controller do
-  let(:user) {create(:user)}
+  let(:user) { create(:user, email: "test@test.com") }
+  let(:my_topic) { create(:topic, user: user) }
+
+  before :each do
+    sign_in user
+  end
 
   describe "GET #index" do
-
     it "returns http success" do
-      sign_in :user,  @user
-      sign_in @user
-
       get :index
       expect(response).to have_http_status(:success)
     end
@@ -18,7 +19,7 @@ RSpec.describe TopicsController, type: :controller do
       expect(response).to render_template(:index)
     end
 
-    it "assigns Topic.all to topics" do
+    it "assign Topic.all to topics" do
       get :index
       expect(assigns(:topics)).to eq(Topic.all)
     end
@@ -26,7 +27,7 @@ RSpec.describe TopicsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, id: my_topic.id
       expect(response).to have_http_status(:success)
     end
   end
@@ -40,9 +41,8 @@ RSpec.describe TopicsController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, id: my_topic.id
       expect(response).to have_http_status(:success)
     end
   end
-
 end

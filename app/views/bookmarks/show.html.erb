@@ -1,6 +1,6 @@
 <br>
 <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
-<h2><%= @bookmark.description %></h2><small> by: <%= @bookmark.user.email %></small>
+<h2><%= @bookmark.description %></h2>
 <h3><%= link_to  @bookmark.url, @bookmark.url %></h3>
 <br>
 <% if current_user == @bookmark.user%>
