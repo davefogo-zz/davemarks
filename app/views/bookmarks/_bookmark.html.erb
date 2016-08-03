@@ -7,6 +7,7 @@
         | <%= link_to "Remove", [@topic, bookmark], method: :delete %>
       <% end %>
       <br>
+      <small><%= bookmark.topic.title %></small>
     </div>
   </div>
 <% end %>
