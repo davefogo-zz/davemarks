@@ -9,4 +9,13 @@ class Bookmark < ActiveRecord::Base
       Bookmark.create! row.to_hash
     end
   end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |bookmark|
+        csv << bookmark.attributes.values_at(*column_names)
+      end
+    end
+  end
 end
