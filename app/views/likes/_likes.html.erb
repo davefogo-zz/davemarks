@@ -1,0 +1,9 @@
+<% likes.each do |like| %>
+<div class="row">
+  <div class="col-sm-8">
+  <h4><%= link_to like.bookmark.description, topic_bookmark_path(like.bookmark.topic, like.bookmark) %></h4>
+  <small><%= like.bookmark.topic.title %></small>
+  <% if current_user == like.bookmark.user %>
+    | <%= link_to "Unlike", [like.bookmark, like], method: :delete %>
+  <% end %>
+<% end %>

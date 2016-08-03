@@ -1,8 +1,10 @@
 class Bookmark < ActiveRecord::Base
   belongs_to :topic
   belongs_to :user
-  validates :url, length: {minimum: 3}, presence: true
+
   has_many :likes, dependent: :destroy
+  validates :url, length: {minimum: 3}, presence: true
+  validates :topic, presence: true
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|

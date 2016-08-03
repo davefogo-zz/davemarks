@@ -7,26 +7,20 @@
 
 <div class="row">
 <h2>My Blocmarks</h2>
-<% @user_bookmarks.each do |user_bookmark| %>
   <div class="media-header">
-    <h3><%= user_bookmark.topic.title %></h3>
       <div class="media-body">
-        <%= render partial: 'bookmarks/bookmark', locals: {topic: user_bookmark.topic} %>
+        <%= render partial: 'bookmarks/bookmark', locals: {topic: @topic, bookmark: @user_bookmarks} %>
       </div>
   </div>
-<% end %>
 </div>
 
 <div class="row">
   <h2>Liked Blocmarks</h2>
-  <% @liked_bookmarks.each do |like| %>
     <div class="media-header">
-      <h3><%= like.bookmark.topic.title %></h3>
         <div class="media-body">
-          <%= render partial: 'bookmarks/bookmark', locals: {topic: like.bookmark.topic} %>
+          <%= render partial: 'likes/likes', locals: {topic: @topic, likes: @liked_bookmarks} %>
         </div>
     </div>
-  <% end %>
   <br>
   <h3>Download your data</h3>
   <%= link_to "Download", bookmarks_path(format: "csv"), class: 'btn btn-default' %>
