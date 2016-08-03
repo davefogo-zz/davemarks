@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :bookmark do
-    url "MyString"
-    topic nil
+    url Faker::Internet.url
+    description Faker::Hipster.sentence
+    topic
+    user
   end
 end
