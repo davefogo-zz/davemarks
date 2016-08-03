@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:index]
 
   def user_not_authorized
-    flash[:alert] = "Access denied."
+    flash[:alert] = "Access denied. You cannot delete or modify other user's content."
     redirect_to (request.referrer || root_path)
   end
 end
