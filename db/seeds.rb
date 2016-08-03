@@ -5,10 +5,10 @@
   password: "password"
   )
 #
-#   User.create(
-#   email: "david.forrero@gmail.com",
-#   password: "password"
-#   )
+  User.create(
+  email: "david.forrero@gmail.com",
+  password: "password"
+  )
 #
 # users = User.all
 #
