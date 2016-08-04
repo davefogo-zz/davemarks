@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     resources :likes, only: [:index, :create, :destroy]
   end
 
-  resources :bookmarks, only: [:index]
+  resources :bookmarks do
+    collection { get :export }
+  end
 
   get 'about' => 'welcome#about'
 
