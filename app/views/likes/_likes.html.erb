@@ -7,7 +7,7 @@
         | <%= link_to "Unlike", [topic, like.bookmark], method: :delete %>
       <% end %>
       <br>
-      <%= topic.title %>
+      <%= like.bookmark.topic.title %>
       <br>
     </div>
   </div>
