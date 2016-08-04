@@ -3,8 +3,8 @@
     <div class="col-sm-8">
       <h4><%= link_to like.bookmark.description, topic_bookmark_path(topic, like.bookmark) %></h4>
       <%= link_to "#{like.bookmark.url}", "#{like.bookmark.url}" %>
-      <% if current_user == like.bookmark.user %>
-        | <%= link_to "Unlike", [topic, like.bookmark], method: :delete %>
+      <% if current_user == like.user %>
+        | <%= link_to "Unlike", [topic, like.bookmark], method: :delete, class: 'link-to-text-color' %>
       <% end %>
       <br>
       <%= like.bookmark.topic.title %>
