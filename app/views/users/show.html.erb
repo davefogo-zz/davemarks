@@ -6,22 +6,18 @@
 </p>
 
 <div class="row">
-<h2>My Blocmarks</h2>
-  <div class="media-header">
-      <div class="media-body">
-        <%= render partial: 'bookmarks/bookmark', locals: {topic: @topic, bookmark: @user_bookmarks} %>
-      </div>
-  </div>
+  <h2>My Blocmarks</h2>
+    <div class="media-body">
+      <%= render partial: 'bookmarks/bookmark', locals: {topic: @topic, bookmark: @user_bookmarks} %>
+    </div>
 </div>
 
 <div class="row">
   <h2>Liked Blocmarks</h2>
-    <div class="media-header">
-        <div class="media-body">
-          <%= render partial: 'likes/likes', locals: {topic: @topic, likes: @liked_bookmarks} %>
-        </div>
+    <div class="media-body">
+      <%= render partial: 'likes/likes', locals: {topic: @topic, likes: @liked_bookmarks} %>
     </div>
   <br>
   <h3>Download your data</h3>
-  <%= link_to "Download", bookmarks_path(format: "csv"), class: 'btn btn-default' %>
+  <%= link_to "Download", export_bookmarks_path(format: "csv"), class: 'btn btn-default' %>
 </div>

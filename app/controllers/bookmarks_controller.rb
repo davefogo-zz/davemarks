@@ -1,13 +1,5 @@
 class BookmarksController < ApplicationController
 
-  def index
-    @bookmarks = Bookmark.all
-
-    respond_to do |format|
-      format.csv { render text: @bookmarks.to_csv }
-    end
-  end
-
   def show
     @bookmark = Bookmark.find(params[:id])
   end
@@ -66,6 +58,15 @@ class BookmarksController < ApplicationController
   def import
     Bookmark.import(params[:file])
     redirect_to topics_path
+  end
+
+  def export
+    @bookmarks = Bookmark.where(user_id: current_user.id)
+    authorize @bookmark
+    
+    respond_to do |format|
+      format.csv { render text: @bookmarks.to_csv }
+    end
   end
 
   private
