@@ -4,7 +4,7 @@
       <h4><%= link_to like.bookmark.description, topic_bookmark_path(topic, like.bookmark) %></h4>
       <%= link_to "#{like.bookmark.url}", "#{like.bookmark.url}" %>
       <% if current_user == like.user %>
-        | <%= link_to "Unlike", [topic, like.bookmark], method: :delete, class: 'link-to-text-color' %>
+        | <%= link_to "Unlike", bookmark_like_path(like.bookmark, like), method: :delete %>
       <% end %>
       <br>
       <%= like.bookmark.topic.title %>
