@@ -10,7 +10,7 @@ class LikesController < ApplicationController
     else
       flash.now[:alert] = "Bookmark could not be liked. Please try again."
     end
-    redirect_to [@bookmark.topic, @bookmark]
+    redirect_to :back
   end
 
   def destroy
@@ -23,6 +23,6 @@ class LikesController < ApplicationController
     else
       flash.now[:alert] = "Bookmark could not be unliked. Please try again."
     end
-    redirect_to [@bookmark.topic, @bookmark]
+    redirect_to :back
   end
 end
