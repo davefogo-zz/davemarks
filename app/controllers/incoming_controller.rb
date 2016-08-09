@@ -8,27 +8,27 @@ class IncomingController < ApplicationController
 
 
     # Find the user by using
-     user = User.find(params[:sender])
+     user = User.find_by(email: params[:sender])
      # Find the topic by using
      topic = Topic.find(params[:subject])
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
 
-     if @user.nil?
-       @user = User.new(email: user, password: "password")
-       @user.save!
+     if user.nil?
+       user = User.new(email: user, password: "password")
+       user.save!
      end
 
      # Check if the topic is nil, if so, create and save a new topic
 
-      if @topic.nil?
-        @topic = Topic.new(title: topic)
-        @topic.save!
+      if topic.nil?
+        topic = Topic.new(title: topic)
+        topic.save!
       end
 
-      @bookmark = @topic.bookmarks.build(user: user, url: url)
+      bookmark = topic.bookmarks.build(user: user, url: url)
 
-      @bookmark.save!
+      bookmark.save!
 
 
     # Assuming all went well.
