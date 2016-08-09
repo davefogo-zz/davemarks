@@ -5,9 +5,9 @@ class IncomingController < ApplicationController
   def create
     Rails.logger.info params.inspect
     # Find the user
-     user = User.by(email: params[:sender])
+     user = User.find_by(email: params[:sender])
      # Find the topic
-     topic = Topic.by(title: params[:subject])
+     topic = Topic.find_by(title: params[:subject])
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
 
