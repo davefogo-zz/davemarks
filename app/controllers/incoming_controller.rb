@@ -5,6 +5,7 @@ class IncomingController < ApplicationController
   def create
     Rails.logger.info "##############################"
     Rails.logger.info params.inspect
+    Rails.logger.info "##############################"
     # Find the user
      user = User.find_by(email: params[:sender])
      # Find the topic
