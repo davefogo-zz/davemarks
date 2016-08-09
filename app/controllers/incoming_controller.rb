@@ -5,7 +5,6 @@ class IncomingController < ApplicationController
   def create
     Rails.logger.info "##############################"
     Rails.logger.info params.inspect
-    Rails.logger.info "##############################"
     # Find the user
      user = User.find_by(email: params[:sender])
      # Find the topic
@@ -14,14 +13,14 @@ class IncomingController < ApplicationController
      url = params["body-plain"]
 
      if user.nil?
-       user = User.new(email: user, password: "password")
+       user = User.new(email: user.email, password: "password")
        user.save!
      end
 
      # If the topic is nil, create and save a new topic
 
       if topic.nil?
-        topic = Topic.new(title: topic, user: user)
+        topic = Topic.new(title: topic.title, user: user)
         topic.save!
       end
 
