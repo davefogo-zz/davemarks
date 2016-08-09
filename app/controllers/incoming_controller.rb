@@ -3,6 +3,7 @@ class IncomingController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
 
   def create
+    Rails.logger.info "##############################"
     Rails.logger.info params.inspect
     # Find the user
      user = User.find_by(email: params[:sender])
