@@ -15,15 +15,15 @@ class IncomingController < ApplicationController
      url = params["body-plain"]
 
      if user.nil?
-       User.new(email: user, password: "password")
-       user.save!
+       new_user = User.new(email: user, password: "password")
+       new_user.save!
      end
 
      # If the topic is nil, create and save a new topic
 
       if topic.nil?
-        Topic.new(title: topic, user: user)
-        topic.save!
+        new_topic = Topic.new(title: topic, user: user)
+        new_topic.save!
       end
 
       bookmark = topic.bookmarks.build(user: user, url: url)
