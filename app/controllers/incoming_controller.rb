@@ -24,6 +24,7 @@ class IncomingController < ApplicationController
       if topic.nil?
         new_topic = Topic.new(title: topic, user: user)
         new_topic.save!
+        bookmark = new_topic.bookmarks.build(user: user, url: url)
       end
 
       bookmark = topic.bookmarks.build(user: user, url: url)
