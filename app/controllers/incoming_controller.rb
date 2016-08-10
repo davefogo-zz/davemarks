@@ -13,14 +13,14 @@ class IncomingController < ApplicationController
      url = params["body-plain"]
 
      if user.nil?
-       user = User.new(email: user.email, password: "password")
+       user = User.new(email: user, password: "password")
        user.save!
      end
 
      # If the topic is nil, create and save a new topic
 
       if topic.nil?
-        topic = Topic.new(title: topic.title, user: user)
+        topic = Topic.new(title: topic, user: user)
         topic.save!
       end
 
