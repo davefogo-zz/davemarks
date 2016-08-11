@@ -22,7 +22,7 @@ class IncomingController < ApplicationController
         topic.save!
       end
 
-      bookmark = topic.bookmarks.build(user: user, url: url)
+      bookmark = topic.bookmarks.build(user: user, url: url, description: "bookmark for #{url}")
 
       bookmark.save!
 
