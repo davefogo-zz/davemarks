@@ -12,6 +12,8 @@ class IncomingController < ApplicationController
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
 
+     description = params["stripped-signature"]
+
      # If the user is nil, create and save a new user
      if user.nil?
        user = User.new(email: params[:sender], password: "password")
@@ -25,7 +27,7 @@ class IncomingController < ApplicationController
         topic.save!
       end
 
-      bookmark = topic.bookmarks.build(user: user, url: url, description: "bookmark for #{url}")
+      bookmark = topic.bookmarks.build(user: user, url: url, description: description)
 
       bookmark.save!
 
