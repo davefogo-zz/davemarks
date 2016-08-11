@@ -3,18 +3,14 @@ class IncomingController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
 
   def create
-Rails.logger.info "##############################"
-Rails.logger.info params.inspect
-
     # Find the user
      user = User.find_by(email: params[:sender])
      # Find the topic
      topic = Topic.find_by(title: params[:subject])
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
-Rails.logger.info ">#{topic}<"
      if user.nil?
-       user = User.new(email: user, password: "password")
+       user = User.new(email: params[:sender], password: "password")
        user.save!
      end
 
