@@ -2,6 +2,10 @@ class IncomingController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
   skip_before_action :authenticate_user!, only: [:create]
 
+  def clean_up(string)
+    string.slice! "-- "
+  end
+
   def create
     # Find the user
      user = User.find_by(email: params[:sender])
@@ -12,7 +16,7 @@ class IncomingController < ApplicationController
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
 
-     description = params["stripped-signature"]
+     description = clean_up(params["stripped-signature"])
 
      # If the user is nil, create and save a new user
      if user.nil?
