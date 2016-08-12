@@ -4,6 +4,7 @@ class IncomingController < ApplicationController
 
   def clean_up(string)
     string.gsub!("--", "")
+    string.strip!
   end
 
   def create
