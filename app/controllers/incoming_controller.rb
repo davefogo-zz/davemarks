@@ -22,8 +22,12 @@ class IncomingController < ApplicationController
 
      # If the topic is nil, create and save a new topic
       if topic.nil?
-        topic = Topic.new(title: params["stripped-signature"], user: user)
-        topic.clean_up
+
+        title = params["stripped-signature"]
+        title.gsub!("--", "")
+        title.strip!
+
+        topic = Topic.new(title: title, user: user)
         topic.save!
       end
 
