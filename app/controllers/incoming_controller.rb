@@ -1,10 +1,7 @@
 class IncomingController < ApplicationController
+  require 'yaml'
   skip_before_action :verify_authenticity_token, only: [:create]
   skip_before_action :authenticate_user!, only: [:create]
-
-  def clean_up(string)
-    string.tr!("-- ", "")
-  end
 
   def create
     # Find the user
@@ -14,9 +11,9 @@ class IncomingController < ApplicationController
      topic = Topic.find_by(title: params[:subject])
 
      # Assign the url to a variable after retreiving it from
-     url = params["body-plain"]
-
-     description = clean_up(params["stripped-signature"])
+     body_params = YAML.load(params['body-plain'])
+     url = body_params[:url]
+     description = body_params[:description]
 
      # If the user is nil, create and save a new user
      if user.nil?
