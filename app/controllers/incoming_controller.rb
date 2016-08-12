@@ -7,7 +7,7 @@ class IncomingController < ApplicationController
      user = User.find_by(email: params[:sender])
 
      # Find the topic
-     topic = Topic.find_by(title: clean_up(params["stripped-signature"]))
+     topic = Topic.find_by(title: params["stripped-signature"])
 
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
