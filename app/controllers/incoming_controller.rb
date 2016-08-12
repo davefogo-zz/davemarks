@@ -6,12 +6,17 @@ class IncomingController < ApplicationController
     # Find the user
      user = User.find_by(email: params[:sender])
 
+     # Prepare title for search in rails app
+     title = params["stripped-signature"]
+     title.gsub!("--", "")
+     title.strip!
+
      # Find the topic
-     topic = Topic.find_by(title: params["stripped-signature"])
+     topic = Topic.find_by(title: title)
 
      # Assign the url to a variable after retreiving it from
-     url = params["body-plain"]
-     url.gsub!(/"(\s+\S+[A-Z]+[a-z]+[a-z])"/, "")
+     url = params["stripped-text"]
+     url.gsub!(/(\s+<+[a-z]+[a-z]:..[a-z]+[a-z].[a-z]+[a-z].+>)/, "")
 
      description = params[:subject]
 
@@ -23,11 +28,6 @@ class IncomingController < ApplicationController
 
      # If the topic is nil, create and save a new topic
       if topic.nil?
-
-        title = params["stripped-signature"]
-        title.gsub!("--", "")
-        title.strip!
-
         topic = Topic.new(title: title, user: user)
         topic.save!
       end
