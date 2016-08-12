@@ -9,9 +9,9 @@ class IncomingController < ApplicationController
      # Find the topic
      topic = Topic.find_by(title: params["stripped-signature"])
 
-     # Assign the url to a variable after retreiving it from the email
+     # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
-     url.gsub!("/(\s+\s--\s[A-Z]+[a-z]+[a-z])/", "")
+     url.gsub!(/(\s+\S+[A-Z]+[a-z]+[a-z])/, "")
 
      description = params[:subject]
 
