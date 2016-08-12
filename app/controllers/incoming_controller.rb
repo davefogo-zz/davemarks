@@ -3,7 +3,7 @@ class IncomingController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
 
   def clean_up(string)
-    string.gsub!("--\r\n", "")
+    string.gsub!(""--\r\n"", "")
   end
 
   def create
@@ -11,7 +11,7 @@ class IncomingController < ApplicationController
      user = User.find_by(email: params[:sender])
 
      # Find the topic
-     topic = Topic.find_by(title: params["stripped-signature"])
+     topic = Topic.find_by(title: clean_up(params["stripped-signature"]))
 
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
@@ -26,7 +26,7 @@ class IncomingController < ApplicationController
 
      # If the topic is nil, create and save a new topic
       if topic.nil?
-        topic = Topic.new(title: params["stripped-signature"], user: user)
+        topic = Topic.new(title: clean_up(params["stripped-signature"]), user: user)
 
         topic.save!
       end
