@@ -26,7 +26,7 @@ class IncomingController < ApplicationController
 
      # If the topic is nil, create and save a new topic
       if topic.nil?
-        topic = Topic.new(title: clean_up(params["stripped-signature"]), user: user)
+        topic = Topic.new(title: clean_up(params["stripped-signature"])), user: user)
 
         topic.save!
       end
