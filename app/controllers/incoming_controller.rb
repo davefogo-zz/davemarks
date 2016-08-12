@@ -11,7 +11,7 @@ class IncomingController < ApplicationController
 
      # Assign the url to a variable after retreiving it from
      url = params["body-plain"]
-     url.gsub!(/(\s+\S+[A-Z]+[a-z]+[a-z])/, "")
+     url.gsub!(/"(\s+\S+[A-Z]+[a-z]+[a-z])"/, "")
 
      description = params[:subject]
 
