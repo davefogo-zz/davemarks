@@ -3,7 +3,7 @@ class IncomingController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
 
   def clean_up(string)
-    string.slice! "-- "
+    string.tr! "-- "
   end
 
   def create
