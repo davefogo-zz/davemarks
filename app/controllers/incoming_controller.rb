@@ -11,7 +11,7 @@ class IncomingController < ApplicationController
 
      # Assign the url to a variable after retreiving it from the email
      url = params["body-plain"]
-     stripped_url = url.gsub!(/(\s+\s--\s[A-Z]+[a-z]+[a-z])/, "")
+     url.gsub!("/(\s+\s--\s[A-Z]+[a-z]+[a-z])/", "")
 
      description = params[:subject]
 
@@ -32,7 +32,7 @@ class IncomingController < ApplicationController
         topic.save!
       end
 
-      bookmark = topic.bookmarks.build(user: user, url: stripped_url, description: description)
+      bookmark = topic.bookmarks.build(user: user, url: url, description: description)
 
       bookmark.save!
 
