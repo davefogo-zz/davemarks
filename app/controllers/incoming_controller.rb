@@ -2,11 +2,6 @@ class IncomingController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
   skip_before_action :authenticate_user!, only: [:create]
 
-  def clean_up(string)
-    string.gsub!("--", "")
-    string.strip!
-  end
-
   def create
     # Find the user
      user = User.find_by(email: params[:sender])
@@ -27,8 +22,8 @@ class IncomingController < ApplicationController
 
      # If the topic is nil, create and save a new topic
       if topic.nil?
-        topic = Topic.new(title: clean_up(params["stripped-signature"]), user: user)
-
+        topic = Topic.new(title: params["stripped-signature"], user: user)
+        topic.clean_up
         topic.save!
       end
 

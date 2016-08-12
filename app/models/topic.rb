@@ -9,4 +9,10 @@ class Topic < ActiveRecord::Base
       Topic.create! row.to_hash
     end
   end
+
+  def clean_up
+    d = self.title
+    d.gsub!("--", "")
+    d.strip!
+  end
 end
