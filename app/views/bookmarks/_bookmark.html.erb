@@ -1,7 +1,10 @@
-<% bookmark.each do |bookmark| %>
+<% Topic.all.each do |topic| %>
+  <% topic_bookmarks = bookmark.select{|bm| bm.topic_id == topic.id} %>
+  <%= topic.title %>
+<% topic_bookmarks.each do |bookmark| %>
   <div class="row">
     <div class="col-sm-8">
-      <h4><%= link_to bookmark.description, topic_bookmark_path(@topic, bookmark) %></h4>
+      <h4><%= link_to bookmark.description, topic_bookmark_path(topic, bookmark) %></h4>
       <%= link_to "#{bookmark.url}", "#{bookmark.url}" %>
       <% if current_user == bookmark.user %>
         | <%= link_to "Delete", [topic, bookmark], method: :delete %>
@@ -11,4 +14,5 @@
       <br>
     </div>
   </div>
+<% end %>
 <% end %>
