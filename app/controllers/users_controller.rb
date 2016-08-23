@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @topic = Topic.find(params[:id])
 
     @user_bookmarks = @user.bookmarks
-    @liked_bookmarks = @user.likes
+    @likes = @user.likes
+
   end
 end

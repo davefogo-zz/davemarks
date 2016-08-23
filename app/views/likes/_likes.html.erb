@@ -1,14 +1,16 @@
-<% likes.each do |like| %>
-  <div class="row">
-    <div class="col-sm-8">
-      <h4><%= link_to like.bookmark.description, topic_bookmark_path(topic, like.bookmark) %></h4>
-      <%= link_to "#{like.bookmark.url}", "#{like.bookmark.url}" %>
-      <% if current_user == like.user %>
-        | <%= link_to "Unlike", bookmark_like_path(like.bookmark, like), method: :delete %>
-      <% end %>
-      <br>
-      <%= like.bookmark.topic.title %>
-      <br>
-    </div>
-  </div>
+<% Topic.all.each do |topic| %>
+    <% topic_bookmarks_likes = likes.select{|l| l.bookmark.topic_id == topic.id} %>
+    <h4><%= topic.title %></h4>
+    <% topic_bookmarks_likes.each do |like| %>
+      <div class="row">
+        <div class="col-sm-8">
+          <h4><%= link_to like.bookmark.description, topic_bookmark_path(topic, like.bookmark) %></h4>
+          <%= link_to "#{like.bookmark.url}", "#{like.bookmark.url}" %>
+          <% if current_user == like.bookmark.user %>
+            | <%= link_to "Unlike", bookmark_like_path(like.bookmark, like), method: :delete %>
+          <% end %>
+          <br>
+        </div>
+      </div>
+  <% end %>
 <% end %>
