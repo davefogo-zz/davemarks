@@ -1,5 +1,6 @@
 <% Topic.all.each do |topic| %>
     <% topic_bookmarks_likes = likes.select{|l| l.bookmark.topic_id == topic.id} %>
+    <% unless topic_bookmarks_likes.empty? %>
     <h4><%= topic.title %></h4>
     <% topic_bookmarks_likes.each do |like| %>
       <div class="row">
@@ -12,5 +13,6 @@
           <br>
         </div>
       </div>
+    <% end %>
   <% end %>
 <% end %>
