@@ -62,7 +62,6 @@ class BookmarksController < ApplicationController
 
   def export
     @bookmarks = Bookmark.where(user_id: current_user.id)
-    authorize @bookmark
 
     respond_to do |format|
       format.csv { render text: @bookmarks.to_csv }
