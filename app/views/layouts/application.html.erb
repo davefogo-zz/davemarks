@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blocmark</title>
+  <title>Davemarks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -13,7 +13,7 @@
         <li><%= link_to "Home", root_path %></li>
 
         <% if user_signed_in? %>
-          <li><%= link_to "Blocmarks", topics_path %></li>
+          <li><%= link_to "Davemarks", topics_path %></li>
         <% end %>
         <div class=" pull-right user-info">
           <% if user_signed_in? %>

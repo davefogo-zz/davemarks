@@ -6,14 +6,14 @@
 </p>
 
 <div class="row">
-  <h2>My Blocmarks</h2>
+  <h2>My Davemarks</h2>
     <div class="media-body">
       <%= render partial: 'bookmarks/bookmark', locals: {topic: @topic, bookmark: @user_bookmarks} %>
     </div>
 </div>
 
 <div class="row">
-  <h2>Liked Blocmarks</h2>
+  <h2>Liked Davemarks</h2>
     <div class="media-body">
       <%= render partial: 'likes/likes', locals: {topic: @topic, likes: @likes} %>
     </div>
