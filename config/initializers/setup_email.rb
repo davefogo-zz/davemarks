@@ -7,7 +7,7 @@ if Rails.env.development? || Rails.env.production?
     :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
     user_name:      ENV['MAILGUN_SMTP_LOGIN'],
     password:       ENV['MAILGUN_SMTP_PASSWORD'],
-    domain:         'postmaster@sandboxd73b0c75cad046fb82d8c51a230f9981.mailgun.org',
+    domain:         'https://lit-citadel-94662.herokuapp.com',
     enable_starttls_auto: true
   }
   ActionMailer::Base.raise_delivery_errors = true
