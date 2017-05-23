@@ -3,7 +3,7 @@ if Rails.env.development? || Rails.env.production?
   ActionMailer::Base.smtp_settings = {
     address:        'smtp.mailgun.org',
     port:           '587',
-    authentication: :login,
+    authentication: :plain,
     :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
     user_name:      ENV['MAILGUN_SMTP_LOGIN'],
     password:       ENV['MAILGUN_SMTP_PASSWORD'],
@@ -11,6 +11,7 @@ if Rails.env.development? || Rails.env.production?
     enable_starttls_auto: true
   }
   ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.delivery_method = :smtp
 
   # This interceptor just makes sure that local mail
 # only emails you.
