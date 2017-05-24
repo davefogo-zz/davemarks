@@ -14,9 +14,18 @@
 #
 #create topics
 
-  title = ["General", "Git", "Rails", "Ruby", "Javascript", "HTML", "CSS", "Hobby", "USA", "Terminal", "macOS", "iOS", "Networking", "Heroku", "Productivity", "Wellness", "Learn", "Text Editors", "HTTP", "Technology Research", "Accounting", "Agile", "Bloc", "ideamos", "Business Intelligence", "Windows Server", "Finance", "Online Business", "Electrical Engineering", "RSpec", "Opportunities", "Dev Tools" ]
+title1 = ["Accounting", "Agile", "Bloc", "Business Intelligence", "CSS", "Dev Tools", "Electrical Engineering", "Finance", "General", "Git", "HTML", "HTTP", "Heroku", "Hobby", "Javascript", "Learn", "Networking", "Online Business", "Opportunities"]
 
-  title.sort.each do |title|
+title2 = ["Productivity", "RSpec", "Rails", "Ruby", "Technology Research", "Terminal",  "Text Editors","USA","Wellness",  "Windows Server", "iOS",  "ideamos",  "macOS",  "Blog",  "PG",  "Agriculture", "General Programing",  "Math",  "Big Ideas", "General Programming"]
+
+title3 = ["Sent from my iPhone", "Rspec", "Ruby on Rails", "Computer", "Opotunities", "jQuery", "Programming General",  "Angular",  "Text Editor", "Node.JS",  "Node.js",  "Computer General", "Cruelty Free", "Opportunity", "Parenting", "Travel",  "Usa",  "IT",  "Mental Models"]
+
+title4 = ["Life", "Firebase", "Bridge", "API",  "Family", "Credit", "Get a Job", "-Javascript", "Job", "Surveys", "Lifehack", "Pets",  "Test",  "Alt Email",  "Github", "Mac", "Pre-school"]
+
+
+  title = title1 + title2 + title3 + title4
+
+  title.each do |title|
     Topic.create!(title: title, user_id: 1)
   end
 
